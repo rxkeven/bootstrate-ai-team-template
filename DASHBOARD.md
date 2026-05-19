@@ -1,10 +1,10 @@
-# {COMPANY} AI Ops Dashboard
+# Company AI Ops Dashboard
 
-_Auto-generated. Last updated: {WILL_BE_REPLACED_BY_SCRIPT}_
+_Auto-generated. Last updated: 2026-05-19 23:25 UTC_
 
 _This file is rebuilt on every push by the update-dashboard workflow. Do not edit manually._
 
-## Waiting on {CEO_ROLE}
+## Waiting on ceo
 
 _No items pending._
 
@@ -14,7 +14,7 @@ _No active tasks tracked yet._
 
 ## Inbox Activity
 
-_Will populate on first regen._
+_All inboxes empty._
 
 ## Recent Decisions (last 7 days)
 
