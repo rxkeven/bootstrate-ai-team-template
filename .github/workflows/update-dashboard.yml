@@ -1,0 +1,45 @@
+name: Update Dashboard
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '_inbox/**'
+      - '_archive/**'
+      - 'projects/**'
+      - 'scripts/update_dashboard.py'
+
+jobs:
+  update-dashboard:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Regenerate DASHBOARD.md
+        env:
+          CEO_ROLE: ${{ vars.CEO_ROLE || 'ceo' }}
+          COMPANY: ${{ vars.COMPANY || 'Company' }}
+        run: |
+          python scripts/update_dashboard.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet DASHBOARD.md; then
+            git add DASHBOARD.md
+            git commit -m "chore: auto-regenerate DASHBOARD.md"
+            git push
+          else
+            echo "Dashboard unchanged, nothing to commit."
+          fi
