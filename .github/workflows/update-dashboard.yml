@@ -2,13 +2,17 @@ name: Update Dashboard
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
       - '_inbox/**'
       - '_archive/**'
       - 'projects/**'
       - 'scripts/update_dashboard.py'
+  workflow_dispatch:
+
+concurrency:
+  group: update-dashboard
+  cancel-in-progress: false
 
 jobs:
   update-dashboard:
@@ -18,28 +22,61 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Regenerate DASHBOARD.md
+      - name: Regenerate and push (with conflict-safe retry)
+        shell: bash
         env:
           CEO_ROLE: ${{ vars.CEO_ROLE || 'ceo' }}
           COMPANY: ${{ vars.COMPANY || 'Company' }}
         run: |
-          python scripts/update_dashboard.py
-
-      - name: Commit if changed
-        run: |
+          set -eo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet DASHBOARD.md; then
+
+          # One attempt = regenerate from current working tree, stage, commit
+          # if changed, push. Returns 0 on push-success or no-op; non-zero
+          # only on push rejection (non-fast-forward, etc).
+          attempt_once() {
+            python scripts/update_dashboard.py
             git add DASHBOARD.md
+            if git diff --staged --quiet; then
+              echo "::notice::No dashboard changes; nothing to push."
+              return 0
+            fi
             git commit -m "chore: auto-regenerate DASHBOARD.md"
-            git push
-          else
-            echo "Dashboard unchanged, nothing to commit."
-          fi
+            git push 2>&1
+          }
+
+          # Up to 10 attempts with linear backoff. On each failure: reset the
+          # working tree to the latest origin/main and try again from a fresh
+          # base, so the regenerated dashboard reflects the newest team state.
+          # Handles sustained burst-write contention (PM rapid archive cycles,
+          # multiple roles archiving in parallel) where a single-shot push
+          # would lose the non-fast-forward race.
+          for attempt in 1 2 3 4 5 6 7 8 9 10; do
+            echo "::group::attempt $attempt"
+            if attempt_once; then
+              echo "::endgroup::"
+              echo "::notice::Dashboard published on attempt $attempt."
+              exit 0
+            fi
+            echo "::warning::Attempt $attempt failed (likely non-fast-forward); resetting to latest origin/main."
+            # Drop any in-flight commit we just made.
+            git reset --hard HEAD 2>/dev/null || true
+            # Pull latest origin and reset onto it so the next regen sees fresh data.
+            git fetch origin main
+            git reset --hard origin/main
+            # Linear backoff: 2, 4, 6, 8, ... seconds.
+            sleep $((attempt * 2))
+            echo "::endgroup::"
+          done
+
+          echo "::error::Dashboard push failed after 10 attempts. Check for sustained write contention or branch protection issues."
+          exit 1
