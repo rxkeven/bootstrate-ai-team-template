@@ -11,6 +11,23 @@ This skill defines how an Engineer Claude Code session stays alive between activ
 
 Engineers on Claude Code are continuous-session roles in the Bootstrate operating model. PM Cowork polls every 30 minutes via a scheduled task. Engineers need an equivalent steady-state cadence on a surface that does not natively schedule. The `/loop` feature gives the Engineer a way to wait, then come back and check the inbox, then either act or wait again. Without this protocol, Engineers either end their session (forcing CEO to re-spawn) or sit idle producing no signal that they are alive.
 
+## Loop syntax
+
+`/loop` runs a prompt (or slash command) on a recurring interval:
+
+```
+/loop [interval] <prompt-or-command>
+```
+
+- **Explicit interval:** `/loop 30m check my inbox` — repeats the prompt every 30 minutes.
+- **Self-paced (recommended for engineers):** `/loop check my inbox` — no interval; Claude uses `ScheduleWakeup` to set the delay dynamically based on context.
+
+**Always provide a prompt.** The prompt tells Claude what to do each cycle. For engineers, the standard prompt is a variation of:
+
+> `check my inbox and action any messages per the inbox-check skill`
+
+**Use self-paced mode by default.** Self-paced mode lets Claude adjust timing dynamically — shorter during active sprints, longer when idle — which is more appropriate than a fixed interval. The duration targets in this skill are intended as `ScheduleWakeup` delay guidelines for self-paced mode, not as `/loop` interval arguments.
+
 ## When the loop applies
 
 Enter the loop after any of:
@@ -38,7 +55,7 @@ Do NOT enter the loop:
         v
    [action] -> [status to PM] -> [/loop]
                                     |
-                                    v (loop ends, ~30 min)
+                                    v (ScheduleWakeup fires)
                               [check inbox]
                                     |
                                     +---> back to top
@@ -48,13 +65,15 @@ In words:
 
 1. Run inbox-check per the `inbox-check` skill.
 2. If there are items, action them per their disposition. If you write status back to PM, include "looping again on completion" so PM knows you are still alive.
-3. If the inbox is empty after action, issue `/loop` with the standard duration.
+3. If the inbox is empty after action, invoke `/loop` (self-paced) with the standard inbox-check prompt. Claude will call `ScheduleWakeup` with the appropriate delay from the duration table below.
 4. When the loop terminates, immediately run inbox-check again.
 5. If 3 loops complete with empty inbox each time, exit per the boundary rules below.
 
 ## Loop duration
 
-Default: 30 minutes. This matches PM Cowork's polling cadence, so PM's next tick and your next inbox check stay roughly in sync.
+These are target delays for `ScheduleWakeup` when running in self-paced mode. They are not `/loop` interval arguments.
+
+Default: **30 minutes** (1800 seconds). This matches PM Cowork's polling cadence, so PM's next tick and your next inbox check stay roughly in sync.
 
 Adjust:
 
@@ -105,6 +124,7 @@ If a role's work is mostly stateless coordination (PM, PA), use Cowork + schedul
 - **Looping silently.** PM and CEO do not know whether you are alive. Always write a status-update before you loop, and a "wake from loop" line when you re-enter active work.
 - **Looping past context threshold.** Quality degrades sharply past 80% even on a fresh task. Hand off first; the next session can loop fresh.
 - **Looping forever.** The 3-empty-cycles boundary is the floor. If something is genuinely wrong (PM not responding, dashboard frozen), surface it and end.
+- **Omitting the prompt from `/loop`.** Without a prompt, `/loop` has no instructions to repeat each cycle. Always include the inbox-check prompt or a slash command.
 
 ## First actions for a session using this skill
 
@@ -118,6 +138,6 @@ Engineer's first-cycle reads now include this skill alongside the four universal
 
 ## Interaction with context-discipline
 
-`context-discipline` always wins. If you are about to issue `/loop` and your context is at 80%+, switch to handoff path. The next session starts fresh and resumes the loop after reading your handoff.
+`context-discipline` always wins. If you are about to invoke `/loop` and your context is at 80%+, switch to handoff path. The next session starts fresh and resumes the loop after reading your handoff.
 
-If your context is at 70-80% (Caution), issue `/loop` with a shorter duration (15 min) and use the wake to wind down active threads. Plan for a context-handoff within the next 1-2 cycles rather than at the very last tick.
+If your context is at 70-80% (Caution), invoke `/loop` with a shorter ScheduleWakeup target (15 min) and use the wake to wind down active threads. Plan for a context-handoff within the next 1-2 cycles rather than at the very last tick.
