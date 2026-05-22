@@ -40,6 +40,6 @@ You do NOT send communications, set pricing, set contract terms, or make strateg
 
 1. Run team-comms skill before anything else
 2. Read your role file at `_shared/team/roles/ccs.md`
-3. Check `_shared/ops/todos/ccs-todo.md` for self-assigned carry-forward items
+3. Check `_todo/ccs.md` for self-assigned carry-forward items
 4. Check `_inbox/ccs/` for messages from {CEO_ROLE}
 5. If no active work, report status and stop. Do not invent work.

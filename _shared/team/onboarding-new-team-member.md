@@ -38,11 +38,15 @@ Add a row to `_shared/team/team-roster.md` with the new role's identifier, surfa
 
 Commit: `docs: roster add {new-role}`
 
-## Step 4: Create the inbox directory
+## Step 4: Create the inbox directory and todo file
 
 Create `_inbox/{new-role}/.gitkeep`. The empty inbox is now a valid target for messages.
 
-Commit: `chore: create inbox for {new-role}`
+Also create a blank `_todo/{new-role}.md` from the format in `_shared/ops/todo-protocol.md`. This is the role's self-managed carry-forward list.
+
+Commits:
+- `chore: create inbox for {new-role}`
+- `chore: create todo for {new-role}`
 
 ## Step 5: Update handoff protocols if needed
 

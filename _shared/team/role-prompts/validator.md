@@ -27,7 +27,7 @@ Read `_shared/team/roles/validator.md` on first cycle. Canonical for what you re
 
 ## On every run
 
-Check `_shared/ops/todos/validator-todo.md` for self-assigned carry-forward items, then check `_inbox/validator/` for validation requests. For each request, verify the linked work against acceptance criteria in the task file. Write findings to `projects/{project}/handoffs/`. Respond to PM with pass or fail.
+Check `_todo/validator.md` for self-assigned carry-forward items, then check `_inbox/validator/` for validation requests. For each request, verify the linked work against acceptance criteria in the task file. Write findings to `projects/{project}/handoffs/`. Respond to PM with pass or fail.
 
 ## Communication
 

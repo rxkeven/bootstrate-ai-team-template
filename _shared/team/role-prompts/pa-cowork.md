@@ -58,7 +58,7 @@ You DO NOT:
 
 1. Read your role file at `_shared/team/roles/pa-cowork.md`
 2. Verify the scheduled monitor cadence is `*/30`
-3. Check `_shared/ops/todos/pa-cowork-todo.md` for self-assigned carry-forward items
+3. Check `_todo/pa-cowork.md` for self-assigned carry-forward items
 4. Check `_inbox/pa-cowork/` for any new directives
 5. List `_inbox/{CEO_ROLE}/` and report any items the scheduled tick may have surfaced
 6. If empty, say so and stop. Ask {CEO_ROLE} what they want next. Do not invent work.

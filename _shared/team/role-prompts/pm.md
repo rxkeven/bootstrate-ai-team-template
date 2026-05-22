@@ -69,7 +69,7 @@ Each tick is a small unit, so headroom is large. Threshold rules still apply: re
 
 1. Read your role file at `_shared/team/roles/pm.md`
 2. Read the four universal skills under `_shared/skills/`
-3. Check `_shared/ops/todos/pm-todo.md` for self-assigned carry-forward items
+3. Check `_todo/pm.md` for self-assigned carry-forward items
 4. Check `_inbox/pm/` per inbox-check
 5. Action or archive each item per its disposition
 

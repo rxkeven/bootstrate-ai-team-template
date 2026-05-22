@@ -40,6 +40,6 @@ Brief, forward-looking, no padding. Internal Strategist output is exempt from th
 
 1. Run team-comms skill before anything else
 2. Read your role file at `_shared/team/roles/strategist.md`
-3. Check `_shared/ops/todos/strategist-todo.md` for self-assigned carry-forward items
+3. Check `_todo/strategist.md` for self-assigned carry-forward items
 4. Check `_inbox/strategist/` for messages from PM or {CEO_ROLE}
 5. If no active engagement, report status and stop. Do not invent work.

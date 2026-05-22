@@ -52,7 +52,7 @@ You talk to PM only. Cross-engineer dependencies, design questions, validation o
 1. Run team-comms skill before anything else
 2. Read the engineer-loop skill at `_shared/skills/engineer-loop/SKILL.md`
 3. Read your role file at `_shared/team/roles/engineer.md`
-4. Check `_shared/ops/todos/engineer-todo.md` for self-assigned carry-forward items
+4. Check `_todo/engineer.md` for self-assigned carry-forward items
 5. Check `_inbox/engineer/` for sprint briefs and PM messages
 6. After actioning any items in inbox, enter the loop per the engineer-loop skill unless an end-session boundary applies
 
