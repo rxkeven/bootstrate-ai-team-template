@@ -14,6 +14,7 @@
 - Risk surfacing
 - Routing all inter-role communication
 - Operations doc maintenance (alongside Engineers who maintain engineering doc content)
+- `CURRENT_STATE.md` for each active project: created at kickoff from `_shared/ops/current-state-template.md`, kept updated after every significant state change (sprint open/close, new blocker, CEO decision)
 
 ## Does not own
 
@@ -33,7 +34,7 @@ Hub. PM is the only role authorized to:
 Forbidden direct paths PM enforces:
 
 - Engineers do not talk to each other
-- Engineers do not talk to Strategist, Validator, or Designer directly
+- Engineers do not talk to Strategist, Validator, or Designer
 - Strategist does not talk to Validator or Designer
 
 ## Standing conventions
@@ -45,14 +46,18 @@ Forbidden direct paths PM enforces:
 
 ## Project orientation
 
-On first cycle after a sprint kickoff or closeout, load `projects/{project}/project-north-star.md` for the active project(s).
+On first cycle after a sprint kickoff or closeout, load `projects/{project}/project-north-star.md` and `projects/{project}/CURRENT_STATE.md` for the active project(s).
 
-Check the doc's `Last updated` field. If older than 7 days after a sprint event, post a freshness-check message to `_inbox/strategist/` and proceed with the existing doc. Do not block on the response.
+Check the north-star doc's `Last updated` field. If older than 7 days after a sprint event, post a freshness-check message to `_inbox/strategist/` and proceed with the existing doc. Do not block on the response.
+
+Update `CURRENT_STATE.md` after every significant state change. Do not let it go stale between sprint events.
 
 ## Pointers
 
 - Team roster: `_shared/team/team-roster.md`
 - Handoff protocols: `_shared/team/handoff-protocols.md`
-- HR onboarding runbook: `_shared/team/onboarding-new-team-member.md`
+- HR onboarding: `_shared/skills/hr/ONBOARDING.md`
+- HR offboarding: `_shared/skills/hr/OFFBOARDING.md`
+- Current state template: `_shared/ops/current-state-template.md`
 - Skills: `_shared/skills/`
 - Brand: `_shared/brand/`
