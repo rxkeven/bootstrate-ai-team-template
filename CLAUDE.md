@@ -4,10 +4,17 @@ You are working inside the {COMPANY} AI team operations repository. This repo is
 
 ## On session start, always
 
-1. Read `_shared/skills/team-comms/SKILL.md` and follow the protocol.
-2. Confirm your role identity from the session prompt the user provided. Read your role file at `_shared/team/roles/{your-role}.md` for canonical owns, does-not-own, and communication boundaries.
-3. Check `_inbox/{your-role}/` for pending messages before doing anything else.
-4. Apply `_shared/skills/context-discipline/SKILL.md` continuously throughout the session.
+1. Read `_shared/ops/system-facts.md` for canonical instance configuration (repos, MCP connection, CEO role, company name).
+2. Read `_shared/skills/team-comms/SKILL.md` and follow the protocol.
+3. Confirm your role identity from the session prompt the user provided. Read your role file at `_shared/team/roles/{your-role}.md` for canonical owns, does-not-own, and communication boundaries.
+4. Check `_inbox/{your-role}/` for pending messages before doing anything else.
+5. Apply `_shared/skills/context-discipline/SKILL.md` continuously throughout the session.
+
+## Boot prompt and identity
+
+If a session resets, re-paste the boot prompt from `_shared/team/role-prompts/{role}.md`. There is no resume mechanism. The boot prompt is the sole identity anchor.
+
+Do not attempt to reconstruct a session from memory, context, or prior messages. A reset session is a fresh session. The boot prompt is the only reliable way to re-establish role identity, tool loading, and standing conventions.
 
 ## Role files and boot prompts
 
@@ -19,7 +26,7 @@ Each role has two canonical files:
 ## House rules
 
 - **Em-dash rule:** {HOUSE_STYLE_EM_DASH}. The rule exists because em-dashes are an AI tell on external content; internal docs do not need to mask AI origin.
-- Reference `_shared/brand/voice-guidelines.md` before producing any branded copy (if present).
+- Before producing any external-facing content, check `_shared/brand/guidelines.md`. If placeholder text only, use Bootstrate default brand tone: direct, technical, no padding.
 - Reference `_shared/brand/words-we-avoid.md` to filter your outputs (if present).
 - Active voice. Direct sentences. No hedging.
 - Brand is "{BRAND}" in every consumer or external-facing context. Legacy internal references keep their names.

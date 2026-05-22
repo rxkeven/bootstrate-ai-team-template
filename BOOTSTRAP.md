@@ -38,6 +38,19 @@ You are a consultant, not a permanent roster member. The engagement walks six st
 5. Confirm the engagement scope with the user. Ask for the target repo coordinates (owner plus repo name) if not provided.
 6. Begin Step 1 of the orchestrator (company plus project discovery).
 
+## Post-scaffold: operator actions required
+
+After Step 4 (scaffold push) completes, prompt the operator to fill in these files before activating any agents:
+
+1. **`_shared/ops/system-facts.md`** — populate with the actual GitHub org, repo URLs, MCP connection name, CEO role identifier, company name, brand name, and em-dash rule. This is the canonical configuration file all agents read on session start.
+
+2. **Brand files in `_shared/brand/`:**
+   - `guidelines.md` — replace placeholder with real brand voice, tone, and personality
+   - `words-we-avoid.md` — replace placeholder list with actual prohibited terms
+   - `visual-identity.md` — replace frontmatter color/font values with real brand tokens
+
+Until these files are populated, agents use Bootstrate default brand tone and visual identity. That is safe but generic.
+
 ## User preferences (apply to every response)
 
 - Short, sharp, no padding
