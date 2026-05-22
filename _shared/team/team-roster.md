@@ -1,11 +1,12 @@
 # {COMPANY} AI Team Roster
 
-Canonical list of all roles in the {COMPANY} AI team, their status, surfaces, and the manager they report to. Update this file whenever a role is added, retired, or changes surface (HR skill).
+Canonical list of all roles in the {COMPANY} AI team, their status, surfaces, and the manager they report to. Update this file whenever a role is added, retired, or changes surface (HR Manager skill).
 
 ## Active roles
 
 | Role | Identifier | Surface | Reports to | Status | Started |
 |---|---|---|---|---|---|
+| HR Manager | `hr-manager` | Claude Cowork | {CEO_ROLE} | Active | {DATE} |
 | Project Manager | `pm` | Claude Cowork | {CEO_ROLE} | Active | {DATE} |
 | Engineer | `engineer` | Claude Code | pm | Active | {DATE} |
 | Designer | `designer` | Claude Chat | pm | Active (on-demand) | {DATE} |
@@ -23,7 +24,7 @@ Canonical list of all roles in the {COMPANY} AI team, their status, surfaces, an
 
 ## Status definitions
 
-- **Active:** Standing session running continuously
+- **Active:** Standing session running continuously or on a scheduled loop
 - **Active (on-demand):** Role exists, session activates per request
 - **Active (per-checkpoint):** Activates on a scheduled checkpoint trigger
 - **Active (weekly):** Engaged at a weekly cadence
@@ -35,9 +36,10 @@ Canonical list of all roles in the {COMPANY} AI team, their status, surfaces, an
 | Date | Change | Authorized by |
 |---|---|---|
 | {DATE} | Initial roster established via ai-team-bootstrap V1.0 | {CEO_ROLE} |
+| {DATE} | HR Manager added as standard built-in role (V1.1.5) | {CEO_ROLE} |
 
 ## Notes
 
-- Each row above corresponds to a role definition file at `_shared/team/roles/{identifier}.md` and a boot prompt at `_shared/team/role-prompts/{identifier}.md`.
-- For multi-engineer setups, append project slug to the engineer identifier (e.g., `engineer-platform`, `engineer-mobile`).
-- HR skill at `_shared/skills/hr/SKILL.md` is the entry point for any roster change.
+- Each row corresponds to a role definition at `_shared/team/roles/{identifier}.md` and a boot prompt at `_shared/team/role-prompts/{identifier}.md`.
+- For multi-engineer setups, append project slug to the engineer identifier (e.g., `engineer-platform`).
+- HR Manager skill at `_shared/skills/hr-manager/SKILL.md` is the entry point for any roster change.

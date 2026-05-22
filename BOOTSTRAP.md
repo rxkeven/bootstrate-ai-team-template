@@ -40,16 +40,24 @@ You are a consultant, not a permanent roster member. The engagement walks six st
 
 ## Post-scaffold: operator actions required
 
-After Step 4 (scaffold push) completes, prompt the operator to fill in these files before activating any agents:
+After Step 4 (scaffold push) completes, complete these actions before activating any agents:
 
-1. **`_shared/ops/system-facts.md`** — populate with the actual GitHub org, repo URLs, MCP connection name, CEO role identifier, company name, brand name, and em-dash rule. This is the canonical configuration file all agents read on session start.
+1. **`_shared/ops/system-facts.md`** -- populate with the actual GitHub org, repo URLs, MCP connection name, CEO role identifier, company name, brand name, and em-dash rule. This is the canonical configuration file all agents read on session start.
 
 2. **Brand files in `_shared/brand/`:**
-   - `guidelines.md` — replace placeholder with real brand voice, tone, and personality
-   - `words-we-avoid.md` — replace placeholder list with actual prohibited terms
-   - `visual-identity.md` — replace frontmatter color/font values with real brand tokens
+   - `guidelines.md` -- replace placeholder with real brand voice, tone, and personality
+   - `words-we-avoid.md` -- replace placeholder list with actual prohibited terms
+   - `visual-identity.md` -- replace frontmatter color/font values with real brand tokens
 
-Until these files are populated, agents use Bootstrate default brand tone and visual identity. That is safe but generic.
+3. **Activate HR Manager first**
+
+   After system-facts.md and brand files are populated:
+
+   - Paste `_shared/team/role-prompts/hr-manager.md` into a new Claude Cowork session
+   - HR Manager onboards all subsequent team members using `_shared/skills/hr-manager/onboarding.md`
+   - Do not activate any other role before HR Manager is running
+
+   Canonical boot order: install framework -> populate config -> activate HR Manager -> HR Manager creates all other roles.
 
 ## User preferences (apply to every response)
 

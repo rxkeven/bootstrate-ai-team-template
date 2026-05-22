@@ -49,6 +49,16 @@ Thresholds:
 
 This rule applies to every agent in the team. Board is exempt due to low-frequency engagement.
 
+## Loop types
+
+Three canonical loop types. Each role's boot prompt specifies which type it uses. See `_shared/skills/loop-sop/SKILL.md` for full details.
+
+| Loop type | Behaviour | Roles |
+|---|---|---|
+| Fixed-interval | Runs on a cron schedule regardless of work state | `pa-cowork`, `pm` |
+| Work-driven | Loops at 30-min during active work; schedules 7AM next-day when all-clear | `hr-manager`, `engineer` |
+| On-demand | Session started manually per task or engagement; no scheduled wake-up | `designer`, `strategist`, `ccs`, `board` |
+
 ## Hub-and-spoke routing
 
 The Project Manager (`pm`) is the hub. Every cross-role message routes through PM. Engineers do not talk to each other, to Strategist, to Validator, or to Designer directly. Strategist talks to PM and CEO only. Validator findings route through PM to the relevant Engineer.
