@@ -6,7 +6,7 @@ You are working inside the {COMPANY} AI team operations repository. This repo is
 
 1. Read `_shared/ops/system-facts.md` for canonical instance configuration (repos, MCP connection, CEO role, company name).
 2. Read `_shared/skills/team-comms/SKILL.md` and follow the protocol.
-3. Confirm your role identity from the session prompt the user provided. Read your role file at `_shared/team/roles/{your-role}.md` for canonical owns, does-not-own, and communication boundaries.
+3. Check `_todo/{your-role}.md` for carry-forward items before checking messages.
 4. Check `_inbox/{your-role}/` for pending messages before doing anything else.
 5. Apply `_shared/skills/context-discipline/SKILL.md` continuously throughout the session.
 
