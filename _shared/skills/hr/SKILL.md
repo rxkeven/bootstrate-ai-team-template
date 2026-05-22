@@ -1,11 +1,11 @@
 ---
 name: hr
-description: Use when adding a new team member to the AI roster, offboarding an existing one, or evaluating role gaps. Wraps the full 10-step onboarding runbook with the entry-point checklist and triggers.
+description: Use when adding a new team member to the AI roster, offboarding an existing one, or evaluating role gaps. Entry point for all roster changes.
 ---
 
 # HR Skill
 
-This skill is the entry point for any change to the AI team roster. It is a thin wrapper around the existing 10-step runbook at `_shared/team/onboarding-new-team-member.md`. The runbook is canonical for procedures; this skill is canonical for when to invoke them.
+This skill is the entry point for any change to the AI team roster.
 
 ## When to trigger
 
@@ -19,11 +19,11 @@ Do NOT trigger for: routine session shutdown handoffs, normal context-discipline
 
 ## Roles
 
-CEO and PM jointly own HR work. CEO authorizes; PM executes the runbook. Strategist may surface gaps but does not own HR execution.
+CEO and PM jointly own HR work. CEO authorizes; PM executes the runbooks. Strategist may surface gaps but does not own HR execution.
 
 ## Entry checklist
 
-Before running the full onboarding runbook, confirm:
+Before running the onboarding runbook, confirm:
 
 1. **Authorization.** Has CEO approved this roster change? If not, escalate via `decision-escalation` first.
 2. **Surface decision.** What surface is the role on (Chat, Cowork, Code, Console Managed Agent, custom)? Surface choice constrains tools available and onboarding steps.
@@ -34,9 +34,10 @@ Before running the full onboarding runbook, confirm:
 
 If any answer is unclear, surface to CEO before starting the runbook.
 
-## Full procedure
+## Full procedures
 
-Run the 10-step runbook at `_shared/team/onboarding-new-team-member.md`. The runbook covers: role spec drafting, brand and skill loading, inbox creation, scheduled-task setup (for Cowork), tool loading, first-cycle verification, roster commit, and activation announcement.
+- **Onboarding:** `_shared/skills/hr/ONBOARDING.md` — 7-step workflow from role identification through activation.
+- **Offboarding:** `_shared/skills/hr/OFFBOARDING.md` — 5-step workflow for permanent role retirement.
 
 ## Templates and patterns
 
@@ -44,16 +45,6 @@ Run the 10-step runbook at `_shared/team/onboarding-new-team-member.md`. The run
 - New Code role: model on existing `_shared/team/role-prompts/engineer.md`.
 - New Chat role: model on existing `_shared/team/role-prompts/strategist.md` or `designer.md`.
 - New role definition: model on any file under `_shared/team/roles/`.
-
-## Offboarding
-
-When permanently retiring a role:
-
-1. The role writes a final shutdown handoff to its manager's inbox.
-2. PM archives all active inbox items for the role to `_archive/_inbox/{role}/`.
-3. Update `_shared/team/team-roster.md` to mark the role retired with a date.
-4. Keep the role files (`_shared/team/roles/{role}.md` and `_shared/team/role-prompts/{role}.md`) for reference; do not delete.
-5. If the role had a scheduled task (Cowork), unregister it.
 
 ## Surface migration
 
