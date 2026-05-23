@@ -44,16 +44,18 @@ After Step 4 (scaffold push) completes, complete these actions before activating
 
 1. **`_shared/ops/system-facts.md`** -- populate with the actual GitHub org, repo URLs, MCP connection name, CEO role identifier, company name, brand name, and em-dash rule. This is the canonical configuration file all agents read on session start.
 
-2. **Brand files in `_shared/brand/`:**
+2. **Surface assignments** -- Confirm the surface column in `team-roster.md` matches where you will actually run each role. Template defaults are in `_shared/ops/system-facts.md`. If any role will run on a different surface (e.g., hr-manager on Claude Cowork instead of Claude Code Desktop, or validator on a different agent type), update both `team-roster.md` and `_shared/team/roles/{identifier}.md` before activating. Mismatched surfaces cause capability confusion on first session.
+
+3. **Brand files in `_shared/brand/`:**
    - `guidelines.md` -- replace placeholder with real brand voice, tone, and personality
    - `words-we-avoid.md` -- replace placeholder list with actual prohibited terms
    - `visual-identity.md` -- replace frontmatter color/font values with real brand tokens
 
-3. **Activate HR Manager first**
+4. **Activate HR Manager first**
 
-   After system-facts.md and brand files are populated:
+   After system-facts.md, surface assignments, and brand files are populated:
 
-   - Paste `_shared/team/role-prompts/hr-manager.md` into a new Claude Cowork session
+   - Paste `_shared/team/role-prompts/hr-manager.md` into a new Claude Code Desktop session
    - HR Manager onboards all subsequent team members using `_shared/skills/hr-manager/onboarding.md`
    - Do not activate any other role before HR Manager is running
 
