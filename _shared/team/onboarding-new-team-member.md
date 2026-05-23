@@ -1,6 +1,6 @@
 # Onboarding a New Team Member
 
-The 10-step runbook for adding a role to the {COMPANY} AI team. PM executes; {CEO_ROLE} authorizes. The HR skill at `_shared/skills/hr/SKILL.md` is the entry point and confirms authorization before this runbook starts.
+The 10-step runbook for adding a role to the {COMPANY} AI team. HR Manager executes; {CEO_ROLE} authorizes. The HR skill at `_shared/skills/hr/SKILL.md` is the entry point and confirms authorization before this runbook starts.
 
 ## Step 1: Draft the role definition
 
@@ -29,6 +29,8 @@ Create `_shared/team/role-prompts/{new-role}.md` modeled on an existing boot pro
 - House rules pointer to CLAUDE.md
 - First actions on session start
 - Read-these-on-first-cycle reference list
+
+Run the 16-item quality gate (`_shared/skills/prompt-qa/SKILL.md`) before committing.
 
 Commit: `feat: add boot prompt for {new-role}`
 
@@ -83,14 +85,14 @@ If any step fails, debug before announcing activation.
 
 ## Step 9: Activation announcement
 
-PM writes a `status-update` to `_inbox/{CEO_ROLE}/` confirming activation. Include:
+HR Manager writes a `status-update` to `_inbox/{CEO_ROLE}/` confirming activation. Include:
 
 - Role identifier
 - Start date
 - First-cycle verification status
 - Any open items (e.g., pending MCP setup, pending integration to other tools)
 
-Commit: `msg: pm -> {CEO_ROLE}: new role activated ({new-role})`
+Commit: `msg: hr-manager -> {CEO_ROLE}: new role activated ({new-role})`
 
 ## Step 10: Update CLAUDE.md if needed
 
