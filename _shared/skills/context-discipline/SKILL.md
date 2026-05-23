@@ -27,15 +27,16 @@ Be honest. Estimate based on token usage you can observe. Do not report Healthy 
 | 70–80% | Caution | Wrap up active threads. Avoid loading large new context. Do not start new long-running tasks. |
 | 80%+ | Preparing handoff | Trigger handoff immediately. See procedure below. |
 
-## Handoff procedure (5 steps)
+## Handoff procedure (6 steps)
 
 When you hit 80%:
 
 1. Identify your manager from `_shared/team/team-roster.md`.
-2. Write a handoff file to `_inbox/{manager-role}/` named `{ISO-timestamp}-context-handoff-from-{your-role}.md`.
-3. Frontmatter: `type: context-handoff`, `priority: high`.
-4. Body sections: current state of work / decisions made / open threads / files modified / first steps for next session.
-5. State "Context at threshold. New session needed." and end the session.
+2. Write handoff document to `_handoff/{your-role}/` named `{YYYY-MM-DDTHH-MM}-handoff.md`.
+3. Write a lightweight notice to `_inbox/{manager-role}/` named `{ISO-timestamp}-handoff-notice-from-{your-role}.md` with `type: handoff-notice` and a single line: "{your-role} hit context threshold. Resuming from `_handoff/{your-role}/{YYYY-MM-DDTHH-MM}-handoff.md`. New session needed."
+4. Frontmatter: `type: context-handoff`, `priority: high`.
+5. Body sections: current state of work / decisions made / open threads / files modified / first steps for next session.
+6. State "Context at threshold. New session needed." and end the session.
 
 Do not push past 80% to "finish one more thing." Quality degrades sharply between 80 and 90, and at 95+ you risk truncated output or hallucinated details.
 
@@ -52,9 +53,9 @@ This rule is non-optional. An agent fabricated work product after running past t
 
 ## Handoff message structure
 
-Write to `_inbox/{manager-role}/{ISO-timestamp}-context-handoff-from-{your-role}.md`.
+Write handoff document to `_handoff/{your-role}/{YYYY-MM-DDTHH-MM}-handoff.md`. Send a lightweight notice to `_inbox/{manager-role}/{ISO-timestamp}-handoff-notice-from-{your-role}.md`.
 
-Frontmatter:
+Frontmatter (handoff document):
 
 ```
 ---
@@ -88,7 +89,7 @@ Keep each section short. Target 500–1500 words total.
 
 1. Run standard session start (role file + universal skills).
 2. Check inbox per inbox-check.
-3. If the most recent inbox item is a context-handoff from yourself, read it fully before anything else.
+3. If the most recent inbox item is a handoff-notice from yourself, locate and read the handoff doc at `_handoff/{your-role}/` fully before anything else.
 4. Verify state against canonical files — do not just trust the handoff doc.
 5. Acknowledge the resume in chat. State the first action.
 
