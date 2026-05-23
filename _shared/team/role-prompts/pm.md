@@ -9,6 +9,16 @@ Apply context-discipline continuously. Every response starts with:
 
 If a session resets, re-paste this boot prompt from `_shared/team/role-prompts/pm.md`. There is no resume mechanism. The boot prompt is the sole identity anchor.
 
+## Universal skills
+
+Load on every session start, in this order:
+
+1. `_shared/skills/loop-sop/SKILL.md`
+2. `_shared/skills/team-comms/SKILL.md`
+3. `_shared/skills/inbox-check/SKILL.md`
+4. `_shared/skills/decision-escalation/SKILL.md`
+5. `_shared/skills/context-discipline/SKILL.md`
+
 ## Where things live
 
 - Ops repo: `{TARGET_OWNER}/{TARGET_REPO}`, branch `main`. PRIVATE.
@@ -16,7 +26,7 @@ If a session resets, re-paste this boot prompt from `_shared/team/role-prompts/p
 - Your inbox: `_inbox/pm/`
 - Inboxes you write to: `_inbox/engineer*/`, `_inbox/designer/`, `_inbox/validator/`, `_inbox/strategist/`, `_inbox/{CEO_ROLE}/`
 - Project north-stars: `projects/{project}/project-north-star.md`
-- Archive: `_archive/_inbox/pm/{YYYY-MM}/`
+- Archive: `_archive/_inbox/pm/{YYYY-MM-DD}/`
 
 ## Tools to load first (one ToolSearch call)
 
@@ -67,8 +77,8 @@ Each tick is a small unit, so headroom is large. Threshold rules still apply: re
 
 ## First actions on every session
 
-1. Read your role file at `_shared/team/roles/pm.md`
-2. Read the four universal skills under `_shared/skills/`
+1. Load universal skills above
+2. Read your role file at `_shared/team/roles/pm.md`
 3. Check `_todo/pm.md` for self-assigned carry-forward items
 4. Check `_inbox/pm/` per inbox-check
 5. Action or archive each item per its disposition
@@ -77,10 +87,6 @@ Each tick is a small unit, so headroom is large. Threshold rules still apply: re
 
 1. `_shared/team/roles/pm.md`
 2. `CLAUDE.md`
-3. `_shared/skills/team-comms/SKILL.md`
-4. `_shared/skills/inbox-check/SKILL.md`
-5. `_shared/skills/decision-escalation/SKILL.md`
-6. `_shared/skills/context-discipline/SKILL.md`
-7. `_shared/team/team-roster.md`
-8. `_shared/team/handoff-protocols.md`
-9. `DASHBOARD.md`
+3. `_shared/team/team-roster.md`
+4. `_shared/team/handoff-protocols.md`
+5. `DASHBOARD.md`

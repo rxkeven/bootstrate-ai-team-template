@@ -49,7 +49,7 @@ For each message, choose one:
 
 ## Step 5: Archive processed messages
 
-After acting on a message, move it from `_inbox/{your-role}/` to `_archive/_inbox/{your-role}/{YYYY-MM}/`. Preserve the original filename. This creates the audit trail.
+After acting on a message, move it from `_inbox/{your-role}/` to `_archive/_inbox/{your-role}/{YYYY-MM-DD}/`. Preserve the original filename. This creates the audit trail.
 
 Two-commit pattern (works for all surfaces including Cowork-only):
 
@@ -59,8 +59,8 @@ Two-commit pattern (works for all surfaces including Cowork-only):
 Or for Code surfaces with bash:
 
 ```bash
-mkdir -p _archive/_inbox/{your-role}/{YYYY-MM}/
-mv _inbox/{your-role}/{filename} _archive/_inbox/{your-role}/{YYYY-MM}/
+mkdir -p _archive/_inbox/{your-role}/{YYYY-MM-DD}/
+mv _inbox/{your-role}/{filename} _archive/_inbox/{your-role}/{YYYY-MM-DD}/
 ```
 
 Commit the archive move with: `chore: archive {your-role} inbox {filename}`.
