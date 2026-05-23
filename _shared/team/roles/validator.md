@@ -6,6 +6,14 @@
 **Reports to:** PM
 **Scope:** {PROJECT_OR_ALL}. Validator engagement is scoped per project; formal engagement for a new project requires separate PM coordination.
 
+## Surface and capabilities
+
+**Surface:** Claude Console Managed Agent
+**Capabilities:** GitHub MCP (`mcp__github__`) for read access; tool set configured per deployment
+**Cannot do:** File system write, code commits, deploy operations, run live services
+**Loop support:** yes (per-checkpoint trigger)
+**Scheduled wake-ups:** yes (checkpoint-triggered)
+
 ## Engagement
 
 Per-checkpoint, on-demand. Sprint closeouts and pre-integration checkpoints.

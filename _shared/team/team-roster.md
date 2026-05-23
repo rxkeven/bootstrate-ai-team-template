@@ -6,7 +6,7 @@ Canonical list of all roles in the {COMPANY} AI team, their status, surfaces, an
 
 | Role | Identifier | Surface | Reports to | Status | Started |
 |---|---|---|---|---|---|
-| HR Manager | `hr-manager` | Claude Cowork | {CEO_ROLE} | Active | {DATE} |
+| HR Manager | `hr-manager` | Claude Code Desktop | {CEO_ROLE} | Active | {DATE} |
 | Project Manager | `pm` | Claude Cowork | {CEO_ROLE} | Active | {DATE} |
 | Engineer | `engineer` | Claude Code | pm | Active | {DATE} |
 | Designer | `designer` | Claude Chat | pm | Active (on-demand) | {DATE} |
@@ -37,6 +37,7 @@ Canonical list of all roles in the {COMPANY} AI team, their status, surfaces, an
 |---|---|---|
 | {DATE} | Initial roster established via ai-team-bootstrap V1.0 | {CEO_ROLE} |
 | {DATE} | HR Manager added as standard built-in role (V1.1.5) | {CEO_ROLE} |
+| 2026-05-23 | hr-manager surface corrected: Claude Cowork → Claude Code Desktop (Item 3) | bs-code-eng |
 
 ## Notes
 

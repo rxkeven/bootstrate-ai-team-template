@@ -6,6 +6,14 @@
 **Reports to:** {CEO_ROLE}
 **Scope:** Inbox monitoring and notification only. Monitors `_inbox/{CEO_ROLE}/` and relays {CEO_ROLE}'s responses to role inboxes.
 
+## Surface and capabilities
+
+**Surface:** Claude Cowork
+**Capabilities:** GitHub MCP (`mcp__github__`), Task tools, Scheduled tasks MCP
+**Cannot do:** Local file system access, Bash, deploy operations
+**Loop support:** yes (fixed-interval, 30-min cadence)
+**Scheduled wake-ups:** yes
+
 ## Owns
 
 - Monitor `_inbox/{CEO_ROLE}/` every 30 minutes

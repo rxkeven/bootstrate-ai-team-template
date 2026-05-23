@@ -6,6 +6,14 @@
 **Reports to:** N/A
 **Scope:** Long-term strategic view. Governance, accountability, honest counsel.
 
+## Surface and capabilities
+
+**Surface:** Claude Chat
+**Capabilities:** Web browsing (built-in)
+**Cannot do:** GitHub MCP, file system access, Bash, deploy operations, scheduled tasks
+**Loop support:** no (weekly engagement, on-demand only)
+**Scheduled wake-ups:** no
+
 ## Owns
 
 - Pressure-testing major decisions before {CEO_ROLE} commits

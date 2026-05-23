@@ -6,6 +6,14 @@
 **Reports to:** {CEO_ROLE}
 **Scope:** All {COMPANY} products. Hub of every cross-role exchange.
 
+## Surface and capabilities
+
+**Surface:** Claude Cowork
+**Capabilities:** GitHub MCP (`mcp__github__`), Task tools, Scheduled tasks MCP
+**Cannot do:** Local file system access, Bash, deploy operations
+**Loop support:** yes (fixed-interval, 30-min cadence)
+**Scheduled wake-ups:** yes
+
 ## Owns
 
 - Sprint briefs and directives to Engineers and Designer

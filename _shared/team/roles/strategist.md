@@ -6,6 +6,14 @@
 **Reports to:** {CEO_ROLE}
 **Scope:** All {COMPANY} products. Concentration follows where strategic forks live.
 
+## Surface and capabilities
+
+**Surface:** Claude Chat
+**Capabilities:** Web browsing (built-in)
+**Cannot do:** GitHub MCP, file system access, Bash, deploy operations
+**Loop support:** no (on-demand, activated by {CEO_ROLE} or PM)
+**Scheduled wake-ups:** no
+
 ## Owns
 
 - Locked decisions (architecture, scope, model)

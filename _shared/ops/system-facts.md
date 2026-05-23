@@ -1,38 +1,47 @@
 # System Facts
 
-Canonical instance configuration. Read on every session start before doing anything else. The operator fills this in at scaffold time.
+Canonical configuration file. Read on session start by all roles that reference it. Populated by the operator after scaffold, before activating any agents.
 
 ## GitHub
 
-| Item | Value |
-|------|-------|
-| GitHub org / owner | `{GITHUB_OWNER}` |
-| Ops repo | `{GITHUB_OWNER}/{TARGET_REPO}` |
-| Code repo(s) | `{REPO_URL}` |
-| MCP connection name | `{MCP_CONNECTION_NAME}` |
+| Key | Value |
+|---|---|
+| GitHub org / owner | `{TARGET_OWNER}` |
+| Ops repo | `{TARGET_OWNER}/{TARGET_REPO}` |
+| MCP connection name | `mcp__github__` |
 
-> The MCP connection name is what you pass to tools requiring a named connection. All agents use the same fine-grained PAT scoped to the repos above.
+## Team identity
 
-## Identity
-
-| Item | Value |
-|------|-------|
-| Company / project name | `{COMPANY}` |
+| Key | Value |
+|---|---|
+| Company name | `{COMPANY}` |
+| Consumer brand | `{BRAND}` |
 | CEO role identifier | `{CEO_ROLE}` |
-| Brand name (external) | `{BRAND}` |
-| Em-dash house rule | `{HOUSE_STYLE_EM_DASH}` |
 
-## Roles and surfaces (summary)
+## Content rules
 
-Full canonical roster: `_shared/team/team-roster.md`.
+| Key | Value |
+|---|---|
+| Em-dash rule | `{HOUSE_STYLE_EM_DASH}` |
 
-| Role | Identifier | Surface |
-|------|------------|--------|
-| CEO | `{CEO_ROLE}` | All |
+## Surfaces reference
+
+Canonical surface for each standard role. `team-roster.md` is authoritative for the active team; this table is a quick lookup for new role sessions.
+
+| Role | Identifier | Default surface |
+|---|---|---|
+| HR Manager | `hr-manager` | Claude Code Desktop |
 | Project Manager | `pm` | Claude Cowork |
+| Engineer | `engineer` | Claude Code |
+| Designer | `designer` | Claude Chat |
+| Strategist | `strategist` | Claude Chat |
+| Validator | `validator` | Claude Console Managed Agent |
+| Client Care Specialist | `ccs` | Claude Chat |
+| Board / Advisor | `board` | Claude Chat |
 | Personal Assistant | `pa-cowork` | Claude Cowork |
-| (add roles at scaffold time) | | |
 
-## Instance notes
+## Notes
 
-*Operator: add any instance-specific facts here — timezone, active projects, key external integrations, environment-specific constraints.*
+- Populate all values above before activating any agent. HR Manager reads this file on first cycle.
+- If a role will run on a different surface than the default, update both this table and `team-roster.md` before activating.
+- Do not let this file drift from `team-roster.md`. `team-roster.md` is authoritative; this file is for quick lookup.

@@ -6,6 +6,14 @@
 **Reports to:** PM
 **Scope:** {PROJECT}. Single continuous Claude Code session across multiple sprints.
 
+## Surface and capabilities
+
+**Surface:** Claude Code
+**Capabilities:** Full file system, Bash, GitHub CLI, all configured MCP tools
+**Cannot do:** scope is task-bounded per brief, not surface-bounded
+**Loop support:** yes (work-driven via /loop -- see engineer-loop/SKILL.md)
+**Scheduled wake-ups:** yes
+
 ## Repo and stack
 
 - Repo: `{REPO_URL}` (separate from the ops repo)
