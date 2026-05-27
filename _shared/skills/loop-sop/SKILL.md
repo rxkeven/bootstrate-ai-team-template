@@ -20,11 +20,21 @@ When in doubt: if a role will receive recurring work from PM, it needs a loop.
 - Example roles: `pa-cowork`, `pm`
 - Scheduled wake-ups: yes
 
+### Fixed-interval (adaptive)
+- Runs at a base cadence but adjusts based on queue depth (e.g. 15 min when active, 30 min when quiet)
+- Example roles: `coordinator`
+- Scheduled wake-ups: yes
+
 ### Work-driven
 - Loops at 30-min cadence while tasks are open or replies are pending
 - When all-clear: schedule next check 7AM next business day
 - Example roles: `hr-manager`, `engineer`
 - Scheduled wake-ups: yes
+
+### Work-driven (Cowork)
+- Self-scheduled Cowork monitor; work-driven by active reports and on-demand requests
+- Example roles: `portfolio-manager`
+- Scheduled wake-ups: yes (cron-based Cowork session)
 
 ### On-demand
 - No scheduled loop. Session activates when {CEO_ROLE} or PM manually starts it
@@ -32,12 +42,34 @@ When in doubt: if a role will receive recurring work from PM, it needs a loop.
 - Example roles: `designer`, `strategist`, `ccs`, `board`
 - Note: if a role becomes recurring-work, evaluate switching to work-driven
 
+## Start-of-loop date check
+
+Run at the start of every loop tick before any other work:
+
+```bash
+date -u +'%Y-%m-%dT%H:%M:%SZ'
+date '+%H:%M %A %Z'
+```
+
+Capture both outputs. Include the local date in your loop report `Today:` line. This anchors every loop report to a verifiable day-of-week + timestamp and prevents context drift during long sessions.
+
 ## Loop report
 
-Every Cowork role produces a structured loop report at end of each cycle. Format defined in role boot prompt. Minimum fields: timestamp, role identifier, what was processed, current status, next scheduled wake-up.
+Every Cowork role produces a structured loop report at end of each cycle. Format defined in role boot prompt. Minimum fields:
+
+- **Today:** {DoW YYYY-MM-DD HH:MM local (UTC ISO)} — sourced from the start-of-loop date check
+- timestamp
+- role identifier
+- what was processed
+- current status
+- next scheduled wake-up
 
 Loop reports go to PM inbox (or {CEO_ROLE} inbox for CEO-reporting roles).
 
 ## Business hours
 
 Default: 7AM to 7PM local time. Active loops: 30-min interval. Outside business hours: schedule 7AM next business day.
+
+## Change log
+
+- 2026-05-27 v1.1 — Added start-of-loop date check section and Today: minimum field to loop report. Added Fixed-interval (adaptive) and Work-driven (Cowork) loop types. Phase 1 Item 7.
