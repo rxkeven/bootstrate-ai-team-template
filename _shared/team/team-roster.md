@@ -15,6 +15,8 @@ Canonical list of all roles in the {COMPANY} AI team, their status, surfaces, an
 | Client Care Specialist | `ccs` | Claude Chat | {CEO_ROLE} | Active | {DATE} |
 | Board / Advisor | `board` | Claude Chat | N/A | Active (weekly) | {DATE} |
 | Personal Assistant | `pa-cowork` | Claude Cowork | {CEO_ROLE} | Active | {DATE} |
+| Coordinator | `coordinator` | Claude Code Desktop | pm | In training | {DATE} |
+| Portfolio Manager | `portfolio-manager` | Claude Cowork | {CEO_ROLE} | In training | {DATE} |
 
 ## Retired roles
 
@@ -38,6 +40,7 @@ Canonical list of all roles in the {COMPANY} AI team, their status, surfaces, an
 | {DATE} | Initial roster established via ai-team-bootstrap V1.0 | {CEO_ROLE} |
 | {DATE} | HR Manager added as standard built-in role (V1.1.5) | {CEO_ROLE} |
 | 2026-05-23 | hr-manager surface corrected: Claude Cowork → Claude Code Desktop (Item 3) | bs-code-eng |
+| 2026-05-27 | Coordinator and Portfolio Manager added (V1.2 Phase 1 Item 12) | bs-code-eng |
 
 ## Notes
 
