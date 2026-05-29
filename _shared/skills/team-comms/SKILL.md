@@ -59,37 +59,33 @@ Markdown. Sections vary by `type`:
 
 Keep bodies under one screen when possible. Use references for longer context.
 
-## Commit convention
+## Commit policy: batch by logical operation
 
-When you commit a message:
+Commit by logical operation, not per individual file action. Three commit groups:
 
-`msg: {from-role} -> {to-role}: {topic}`
+1. **Inbox processing** — all archives, deletes, and state-marker updates for one inbox-processing flow → **1 commit**.
+   Format: `{role}: process inbox — {summary}`
+2. **Outgoing messages** — all messages sent as part of one logical flow → **1 commit**.
+   Format: `msg: {from-role} -> {to-role}: {topic}` (comma-separate multiple recipients)
+3. **Discrete decisions** — standalone scope, policy, or doc changes not tied to inbox processing → **1 commit each**.
+   Format: `{role}: {decision-slug}`
 
-Examples:
+Other conventions (apply at the logical-operation level):
 
-- `msg: pm -> engineer-platform: sprint 4 brief`
-- `msg: validator -> pm: sprint 3 closeout findings`
-- `msg: ceo -> pm: approve zod dependency`
+- Decision logs: `decision: {project}: {summary}`
+- Escalations: `escalation: {from-role} -> {ceo-role}: {topic}`
 
-For archive moves (two-commit pattern):
+### Tool guidance
 
-- `chore: archive {role} inbox {filename-without-extension}`
-- `chore: archive {role} inbox {filename-without-extension} (move complete)`
-
-For decision logs:
-
-- `decision: {project}: {summary}`
-
-For escalations:
-
-- `escalation: {from-role} -> {ceo-role}: {topic}`
+- Use `push_files` (not multiple single-file create/update calls) when creating or updating multiple files in the same logical operation. It commits them as one commit, eliminates fast-forward conflicts, and reduces log noise.
+- File deletions cannot be batched — run them sequentially within the same logical operation.
 
 ## Routing rules
 
 - All inter-role messages route through PM. Engineers do not message each other. Strategist does not message Engineers directly. Validator findings route through PM.
 - The CEO inbox (`_inbox/{ceo-role}/`) is the escalation endpoint. Any role may write there when escalation criteria apply (see decision-escalation skill).
 - PA Cowork is the only role that writes to multiple non-PM inboxes (relaying CEO replies).
-- If you find a message in your inbox that should not be addressed to you, re-route it. Move the file to the correct inbox with a one-line note prepended to the body. Commit: `chore: reroute {filename} to {correct-role}`.
+- If you find a message in your inbox that should not be addressed to you, re-route it. Move the file to the correct inbox with a one-line note prepended to the body, as part of that inbox-processing commit.
 
 ## Response expectations
 
