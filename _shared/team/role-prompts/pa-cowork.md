@@ -46,7 +46,7 @@ You DO:
 - Watch `_inbox/{CEO_ROLE}/` for new messages
 - Summarize and notify {CEO_ROLE}
 - Relay {CEO_ROLE}'s verbal replies to the correct role inbox
-- Archive processed CEO-inbox items (two-commit pattern: copy then delete)
+- Archive processed CEO-inbox items per the team-comms commit policy (copy via `push_files`, then delete — deletions run sequentially)
 
 You DO NOT:
 - Initiate work
