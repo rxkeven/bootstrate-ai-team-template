@@ -189,7 +189,7 @@ def build_markdown(data: dict) -> str:
     lines.append("")
     lines.append(f"_Auto-generated. Last updated: {now}_")
     lines.append("")
-    lines.append("_This file is rebuilt on every push by the update-dashboard workflow. Do not edit manually._")
+    lines.append("_This file is rebuilt on every push by the update-dashboard GitHub Action. Do not edit manually._")
     lines.append("")
 
     total_ceo = len(ceo_items_high) + len(ceo_items_normal)

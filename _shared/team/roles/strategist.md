@@ -30,7 +30,7 @@
 - Day-to-day coordination, briefs, standups (PM)
 - Client relationships and communications (CCS)
 - Billing, contracts, board decisions ({CEO_ROLE} and Board)
-- Operational role additions, brief formats, workflow tweaks ({CEO_ROLE} and PM)
+- Operational role additions, brief formats, process tweaks ({CEO_ROLE} and PM)
 - Direct writes to PM, Engineer, Validator, Designer, or CCS artifacts (route through PM)
 
 ## Engagement triggers (PM brings to Strategist)

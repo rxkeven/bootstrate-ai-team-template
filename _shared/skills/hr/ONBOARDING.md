@@ -1,6 +1,6 @@
 # Onboarding a New Team Member
 
-7-step workflow. CEO or Strategist identifies the need; PM executes steps 2 through 6; CEO activates in step 7.
+7-step process. CEO or Strategist identifies the need; PM executes steps 2 through 6; CEO activates in step 7.
 
 ## Steps
 

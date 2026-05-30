@@ -2,7 +2,7 @@
 
 _Auto-generated. Last updated: 2026-05-22 00:33 UTC_
 
-_This file is rebuilt on every push by the update-dashboard workflow. Do not edit manually._
+_This file is rebuilt on every push by the update-dashboard GitHub Action. Do not edit manually._
 
 ## Waiting on ceo
 

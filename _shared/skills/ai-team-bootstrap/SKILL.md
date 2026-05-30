@@ -46,7 +46,7 @@ Ask:
 
 1. Existing AI usage. Any Claude sessions in flight, ChatGPT agents, other models running? What do they own?
 2. Human team members. Names and roles. Who maps to which AI role (CEO, PM, Engineer, Designer, etc.)?
-3. Workflow tools in active use. n8n, Make, Zapier, Airtable, Notion, Linear, Jira, others?
+3. Automation tools in active use. n8n, Make, Zapier, Airtable, Notion, Linear, Jira, others?
 4. MCPs already configured in the user's Claude Desktop. Which ones will the new team need (GitHub, Supabase, Vercel, n8n, Higgsfield, Airtable, etc.)?
 5. Communication tools. Slack, iMessage, email, Discord. Which roles will need which?
 6. Anything migrating from a prior setup that needs preserved state? Existing inbox content, decision logs, ongoing sprint work?
@@ -106,24 +106,24 @@ Procedure:
 
    After substitution but before commit, grep each `.md` and `.yml` file for any remaining `{[A-Z_]+}` pattern. If any uppercase placeholder remains, halt and surface to the user. Do not commit files with unfilled placeholders.
 
-   Exception: `DASHBOARD.md` legitimately contains `{WILL_BE_REPLACED_BY_SCRIPT}`, which is replaced on first push by the dashboard regen workflow. Do not flag this one. Do not include `.py` files in the residue check; `scripts/update_dashboard.py` contains literal `{COMPANY}` and `{CEO_ROLE}` strings that are Python f-string variables read from environment, not template placeholders.
+   Exception: `DASHBOARD.md` legitimately contains `{WILL_BE_REPLACED_BY_SCRIPT}`, which is replaced on first push by the dashboard regen GitHub Action. Do not flag this one. Do not include `.py` files in the residue check; `scripts/update_dashboard.py` contains literal `{COMPANY}` and `{CEO_ROLE}` strings that are Python f-string variables read from environment, not template placeholders.
 3. Batch the pushes into logical commits:
    - Commit 1: `feat: scaffold _shared/skills/` (the four universal skills plus HR plus engineer-loop = 6 SKILL.md files)
    - Commit 2: `feat: scaffold _shared/team/roles/` (per-role definitions)
    - Commit 3: `feat: scaffold _shared/team/role-prompts/` (per-role boot prompts)
    - Commit 4: `feat: scaffold _shared/team/ top-level docs (roster, protocols, runbook, mcp matrix, placeholders, first-flight-runbook)`
    - Commit 5: `feat: scaffold _shared/brand/ stubs (voice-guidelines, words-we-avoid placeholders for user to customize)`
-   - Commit 6: `feat: scaffold top-level CLAUDE.md, DASHBOARD.md, dashboard script and GitHub Action workflow`
+   - Commit 6: `feat: scaffold top-level CLAUDE.md, DASHBOARD.md, dashboard script and GitHub Action`
    - Commit 7: `chore: scaffold _inbox/{role}/ skeletons and _archive/, projects/, _bootstrap/ placeholders`
 4. Verify each commit landed by reading back at least one file from each batch.
-5. **Set GitHub Actions repository variables.** The dashboard regen workflow needs two variables to label the dashboard correctly. Walk the user through setting them via either the GitHub UI (Settings → Secrets and variables → Actions → Variables → New repository variable) or via gh CLI:
+5. **Set GitHub Actions repository variables.** The dashboard regen GitHub Action needs two variables to label the dashboard correctly. Walk the user through setting them via either the GitHub UI (Settings → Secrets and variables → Actions → Variables → New repository variable) or via gh CLI:
 
    ```
    gh variable set CEO_ROLE --body "{CEO_ROLE}" --repo {TARGET_OWNER}/{TARGET_REPO}
    gh variable set COMPANY --body "{COMPANY}" --repo {TARGET_OWNER}/{TARGET_REPO}
    ```
 
-   Substitute the actual approved values. After setting, trigger one dashboard regen (commit any small change to `_inbox/`) and verify the rendered DASHBOARD.md uses the company name and CEO role identifier. If it still shows the defaults `Company` and `ceo`, the variables are not yet visible to the workflow.
+   Substitute the actual approved values. After setting, trigger one dashboard regen (commit any small change to `_inbox/`) and verify the rendered DASHBOARD.md uses the company name and CEO role identifier. If it still shows the defaults `Company` and `ceo`, the variables are not yet visible to the GitHub Action.
 
 6. Report to user: scaffold push complete, X files in Y commits, target repo URL, repo variables verified.
 

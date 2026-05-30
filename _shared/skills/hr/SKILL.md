@@ -36,8 +36,8 @@ If any answer is unclear, surface to CEO before starting the runbook.
 
 ## Full procedures
 
-- **Onboarding:** `_shared/skills/hr/ONBOARDING.md` — 7-step workflow from role identification through activation.
-- **Offboarding:** `_shared/skills/hr/OFFBOARDING.md` — 5-step workflow for permanent role retirement.
+- **Onboarding:** `_shared/skills/hr/ONBOARDING.md` — 7-step process from role identification through activation.
+- **Offboarding:** `_shared/skills/hr/OFFBOARDING.md` — 5-step process for permanent role retirement.
 
 ## Templates and patterns
 

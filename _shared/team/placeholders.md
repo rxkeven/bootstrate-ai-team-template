@@ -69,7 +69,7 @@ The distinction matters: `{CEO_ROLE}` (uppercase, template placeholder) gets sub
 
 For each `.md` or `.yml` file pulled from the template, run the substitution loop over the **orchestrator-managed** tables above. Apply per-project substitutions only on project-scoped files. Do not substitute in-content variables. After substitution, grep the file for any remaining `{[A-Z_]+}` pattern. If any uppercase placeholder remains, halt and surface to the user before committing.
 
-Do **NOT** substitute inside Python scripts (`scripts/update_dashboard.py`). The script contains literal strings like `{COMPANY}` and `{CEO_ROLE}` that are Python f-string variables read from environment variables at runtime — they look like template placeholders but they are not. The script is copied verbatim during scaffold push and reads the GitHub Actions repository variables `CEO_ROLE` and `COMPANY` at workflow runtime.
+Do **NOT** substitute inside Python scripts (`scripts/update_dashboard.py`). The script contains literal strings like `{COMPANY}` and `{CEO_ROLE}` that are Python f-string variables read from environment variables at runtime — they look like template placeholders but they are not. The script is copied verbatim during scaffold push and reads the GitHub Actions repository variables `CEO_ROLE` and `COMPANY` at GitHub Actions runtime.
 
 `DASHBOARD.md` legitimately ships with `{WILL_BE_REPLACED_BY_SCRIPT}` unsubstituted; the script fills it on first push.
 

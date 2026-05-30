@@ -1,6 +1,6 @@
 # Offboarding a Team Member
 
-5-step workflow for permanently retiring a role. Use only for permanent retirement, not routine session shutdown or temporary pause.
+5-step process for permanently retiring a role. Use only for permanent retirement, not routine session shutdown or temporary pause.
 
 ## Steps
 

@@ -49,7 +49,7 @@ Commit: `msg: {CEO_ROLE} -> pm: first-flight smoke brief`
 
 **Pass signal:** Commit lands. DASHBOARD.md regenerates within ~30 seconds showing `pm` with 1 pending message.
 
-**Fail signal:** Workflow does not trigger, or DASHBOARD.md shows defaults `Company` / `ceo`. Cause: repo variables not set, or the workflow file's path filter missed `_inbox/pm/`. Fix the repo variables or the workflow path filter before continuing.
+**Fail signal:** The GitHub Action does not trigger, or DASHBOARD.md shows defaults `Company` / `ceo`. Cause: repo variables not set, or the GitHub Action's path filter missed `_inbox/pm/`. Fix the repo variables or the GitHub Action's path filter before continuing.
 
 ### Step 2: PM picks up the brief on its next tick
 
@@ -244,7 +244,7 @@ The runbook passes when:
 
 | Failure | Likely cause |
 |---|---|
-| Step 1 fails: dashboard does not regenerate | GitHub Action workflow not committed, or path filter wrong, or repo permission missing |
+| Step 1 fails: dashboard does not regenerate | GitHub Action not committed, or path filter wrong, or repo permission missing |
 | Step 1 fails: dashboard shows `Company`/`ceo` defaults | Repo variables `CEO_ROLE` / `COMPANY` not set (B5 substep skipped) |
 | Step 2 fails: PM does not pick up the brief | PM scheduled task not registered, or boot prompt did not load tool selection |
 | Step 2 fails: PM bypasses Engineer | Hub-and-spoke not internalized; re-read CLAUDE.md routing section |

@@ -11,7 +11,7 @@ Last updated: {DATE}.
 | GitHub MCP | Yes | Yes | Yes (via Desktop) | Yes (configured) | Custom integration |
 | Database MCPs (Supabase, etc.) | Yes | Limited | Yes (via Desktop) | Read-only typical | Per config |
 | Deploy MCPs (Vercel, etc.) | Yes | No | Yes (via Desktop) | No | Per config |
-| Workflow MCPs (n8n, Make, Zapier) | Yes | Yes | Yes (via Desktop) | No | Per config |
+| Automation MCPs (n8n, Make, Zapier) | Yes | Yes | Yes (via Desktop) | No | Per config |
 | Asset gen MCPs (Higgsfield etc.) | No | No | Yes (via Desktop) | No | No |
 | Data MCPs (Airtable, Notion) | Yes | Yes | Yes (via Desktop) | No | Per config |
 | Bash / local filesystem | Yes | No | No | No | Per config |
@@ -26,7 +26,7 @@ Last updated: {DATE}.
 |---|---|---|
 | `pm` | Claude Cowork | GitHub, scheduled tasks |
 | `pa-cowork` | Claude Cowork | GitHub, scheduled tasks |
-| `engineer` (per project) | Claude Code | GitHub, project-specific (database, deploy, workflow), bash |
+| `engineer` (per project) | Claude Code | GitHub, project-specific (database, deploy, automation), bash |
 | `designer` | Claude Chat | GitHub, asset gen if applicable |
 | `strategist` | Claude Chat | GitHub |
 | `validator` | Console Managed Agent | GitHub |

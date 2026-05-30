@@ -24,7 +24,7 @@ In your GitHub repo: **Settings → Secrets and variables → Actions**, add:
 |--------|-------|
 | `VERCEL_TOKEN` | Your Vercel API token (Vercel **Account Settings → Tokens**) |
 
-The update-dashboard workflow uses this token to notify Vercel of new deployments after regenerating the dashboard HTML.
+The update-dashboard GitHub Action uses this token to notify Vercel of new deployments after regenerating the dashboard HTML.
 
 ### 3. Configure deployment protection
 
@@ -48,7 +48,7 @@ These are read by `scripts/update_dashboard.py` at generation time.
 
 ### 5. Push to trigger first build
 
-Push any change to a path covered by the update-dashboard workflow (e.g., any `_inbox/**` change). The workflow:
+Push any change to a path covered by the update-dashboard GitHub Action (e.g., any `_inbox/**` change). The GitHub Action:
 
 1. Runs `scripts/update_dashboard.py`
 2. Commits updated `DASHBOARD.md` and `public/index.html`
