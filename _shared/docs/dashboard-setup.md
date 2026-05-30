@@ -66,7 +66,7 @@ The dashboard uses CSS variables derived from `_shared/brand/visual-identity.md`
 
 1. Edit the frontmatter in `_shared/brand/visual-identity.md`
 2. Commit and push
-3. The workflow regenerates and deploys automatically
+3. The GitHub Action regenerates and deploys automatically
 
 ## Reference
 
