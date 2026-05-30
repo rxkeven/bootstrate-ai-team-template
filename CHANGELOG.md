@@ -1,5 +1,10 @@
 # bootstrate-ai-team-template Changelog
 
+## Unreleased
+
+### Changed
+- Internal "workflow" terminology renamed throughout the template to avoid collision with Claude Code's dynamic Workflow feature: team-process usages → "process", third-party automation-tool labels (n8n / Make / Zapier) → "automation", and descriptive GitHub-Actions mentions → "GitHub Action". The CI-mandated `.github/workflows/` path and the `workflow_dispatch` trigger key are intentionally preserved (renaming them breaks CI). Verified by an exhaustive repo-wide scan: the only remaining "workflow" strings are those two CI-required tokens. CEO-directed 2026-05-30. Scope: `bootstrate-ai-team-template` only — active instance repos intentionally unchanged. Commits `2b7ad3b`, `8e6ebad`.
+
 ## v1.2.1 — 2026-05-29
 
 ### Added
